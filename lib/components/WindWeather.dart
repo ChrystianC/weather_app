@@ -45,33 +45,31 @@ class _Wind extends State<Wind> {
                 children: [
                   Text(
                     'Warsaw',
-                    style: TextStyle(
-                        
-                        color: Color.fromARGB(255, 209, 209, 209)),
+                    style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
                   ),
-                  WeatherIcon(description: 'windy', windForce: snapshot.data!.wind ),
+                  WeatherIcon(
+                      description: 'windy', windForce: snapshot.data!.wind),
                   Text(
                     snapshot.data!.wind.replaceAll(new RegExp('Â'), ''),
-                    style: TextStyle(
-                        
-                        color: Color.fromARGB(255, 209, 209, 209)),
+                    style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
                   ),
                 ]);
           } else if (snapshot.hasError) {
             return Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('${snapshot.error}'),
+                  Text(
+                    '${snapshot.error}',
+                    style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
+                  ),
                   Text(
                     'Warsaw',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 209, 209, 209)),
+                    style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
                   ),
                   WeatherIcon(description: 'windy', windForce: '30'),
                   Text(
                     '18 Km/h',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 209, 209, 209)),
+                    style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
                   ),
                 ]);
           }

@@ -36,7 +36,7 @@ Future<WindForcastAPIModel> fetchWindForecast() async {
 class _ForecastWind extends State<ForecastWind> {
   late Future<WindForcastAPIModel> futureWind;
   final today = DateTime.now();
-
+  
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<WindForcastAPIModel>(
@@ -53,10 +53,12 @@ class _ForecastWind extends State<ForecastWind> {
                               days: int.parse(
                                   snapshot.data!.windForcast[0]['day'])))))
                           .toString(),
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 209, 209, 209)),
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
                     ),
-                    WeatherIcon(description: 'windy', windForce: snapshot.data!.windForcast[0]['wind']),
+                    WeatherIcon(
+                        description: 'windy',
+                        windForce: snapshot.data!.windForcast[0]['wind']),
                     Text(
                       snapshot.data!.windForcast[0]['wind'],
                       style: TextStyle(color: Colors.white),
@@ -64,46 +66,109 @@ class _ForecastWind extends State<ForecastWind> {
                   ],
                 ),
                 Padding(padding: EdgeInsets.only(left: 20)),
-                 Column(
-                   children: [
-                     Text(
-                       (DateFormat('EEEE').format(today.add(Duration(
-                               days: int.parse(
-                                   snapshot.data!.windForcast[1]['day'])))))
-                           .toString(),
-                       style: TextStyle(
-                           color: Color.fromARGB(255, 209, 209, 209)),
-                     ),
-                     WeatherIcon(description: 'windy', windForce: snapshot.data!.windForcast[1]['wind'],),
-                     Text(
-                       snapshot.data!.windForcast[1]['wind'],
-                       style: TextStyle(color: Colors.white),
-                     )
-                   ],
-                 ),
+                Column(
+                  children: [
+                    Text(
+                      (DateFormat('EEEE').format(today.add(Duration(
+                              days: int.parse(
+                                  snapshot.data!.windForcast[1]['day'])))))
+                          .toString(),
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
+                    ),
+                    WeatherIcon(
+                      description: 'windy',
+                      windForce: snapshot.data!.windForcast[1]['wind'],
+                    ),
+                    Text(
+                      snapshot.data!.windForcast[1]['wind'],
+                      style: TextStyle(color: Colors.white),
+                    )
+                  ],
+                ),
                 Padding(padding: EdgeInsets.only(left: 20)),
-                  Column(
-                    children: [
-                      Text(
-                        (DateFormat('EEEE').format(today.add(Duration(
-                                days: int.parse(
-                                    snapshot.data!.windForcast[2]['day'])))))
-                            .toString(),
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 209, 209, 209)),
-                      ),
-                      WeatherIcon(description: 'windy', windForce: snapshot.data!.windForcast[2]['wind']),
-                      Text(
-                        snapshot.data!.windForcast[2]['wind'],
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
+                Column(
+                  children: [
+                    Text(
+                      (DateFormat('EEEE').format(today.add(Duration(
+                              days: int.parse(
+                                  snapshot.data!.windForcast[2]['day'])))))
+                          .toString(),
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
+                    ),
+                    WeatherIcon(
+                        description: 'windy',
+                        windForce: snapshot.data!.windForcast[2]['wind']),
+                    Text(
+                      snapshot.data!.windForcast[2]['wind'],
+                      style: TextStyle(color: Colors.white),
+                    )
+                  ],
+                ),
               ],
             );
           } else if (snapshot.hasError) {
-            return Text( '${snapshot.error}',
-                style: TextStyle( color: Colors.white));
+            return Column(
+              children: [
+                Text(
+                  '${snapshot.error}',
+                  style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          'Monday',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 209, 209, 209)),
+                        ),
+                        WeatherIcon(description: 'windy', windForce: '10'),
+                        Text(
+                          '10 Km/h',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 20)),
+                    Column(
+                      children: [
+                        Text(
+                          'Tuesday',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 209, 209, 209)),
+                        ),
+                        WeatherIcon(
+                          description: 'windy',
+                          windForce: '20',
+                        ),
+                        Text(
+                          '20 Km/h',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 20)),
+                    Column(
+                      children: [
+                        Text(
+                          'Wednesday',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 209, 209, 209)),
+                        ),
+                        WeatherIcon(description: 'windy', windForce: '30'),
+                        Text(
+                          '30 Km/h',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            );
           }
           return const CircularProgressIndicator();
         });

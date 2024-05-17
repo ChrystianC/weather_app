@@ -48,21 +48,17 @@ class _TodayWheatherState extends State<TodayWheather> {
                 children: [
                   const Text(
                     'Warsaw',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 209, 209, 209)),
+                    style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
                   ),
                   WeatherIcon(description: snapshot.data!.description),
                   Text(
-                    snapshot.data!.temperature
-                        .replaceAll(new RegExp('Â'), ''),
+                    snapshot.data!.temperature.replaceAll(new RegExp('Â'), ''),
                     style: const TextStyle(
-                        
                         color: Color.fromARGB(255, 209, 209, 209)),
                   ),
                   Text(
                     snapshot.data!.description,
                     style: const TextStyle(
-                        
                         color: Color.fromARGB(255, 209, 209, 209)),
                   )
                 ]);
@@ -73,21 +69,16 @@ class _TodayWheatherState extends State<TodayWheather> {
                   Text(
                     '${snapshot.error}',
                     style: const TextStyle(
-                       
                         color: Color.fromARGB(255, 209, 209, 209)),
                   ),
                   WeatherIcon(description: 'rain'),
                   const Text(
                     '14 \u2103',
-                    style: TextStyle(
-                        
-                        color: Color.fromARGB(255, 209, 209, 209)),
+                    style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
                   ),
                   const Text(
                     'Raining',
-                    style: TextStyle(
-                        
-                        color: Color.fromARGB(255, 209, 209, 209)),
+                    style: TextStyle(color: Color.fromARGB(255, 209, 209, 209)),
                   )
                 ]);
           }
